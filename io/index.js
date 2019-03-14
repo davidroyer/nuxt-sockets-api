@@ -53,7 +53,7 @@ export default function() {
       js.readFile(jsonFile)
         .then(data => {
           console.dir(data)
-          socket.emit('file-update', data)
+          io.emit('file-update', data)
         })
         .catch(error => console.error(error))
     })

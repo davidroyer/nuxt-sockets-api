@@ -3,6 +3,9 @@ const pkg = require('./package')
 module.exports = {
   mode: 'universal',
 
+  router: {
+    middleware: ['data']
+  },
   /*
   ** Headers of the page
   */

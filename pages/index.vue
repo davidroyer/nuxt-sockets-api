@@ -5,7 +5,7 @@
         <div class="chatArea">
           <div class="posts">
             <div 
-              v-for="(post) in fileData" 
+              v-for="(post) in postsFromStore" 
               :key="post.id" 
               class="post"
             >
@@ -42,9 +42,17 @@
 import socket from '@/plugins/socket.io.js'
 
 export default {
+  computed: {
+    postsFromStore() {
+      return this.$store.state.posts
+    }
+  },
   watch: {
     messages: 'scrollToBottom'
   },
+  // fetch() {
+
+  // }
   asyncData({ $postData }) {
     console.log('FROM ASYNCDATA: ', $postData)
 
@@ -56,8 +64,9 @@ export default {
   },
   created() {
     socket.on('file-update', data => {
-      console.log('From created: ', data)
+      // console.log('From created: ', data)
       this.fileData = data
+      this.$store.dispatch('setPosts', data)
     })
   },
   beforeMount() {
