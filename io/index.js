@@ -1,7 +1,8 @@
+/* eslint-disable no-console */
 import http from 'http'
+import fs from 'fs'
 import socketIO from 'socket.io'
 import js from 'jsonfile'
-import fs from 'fs'
 const jsonFile = './io/data/posts.json'
 
 export default function() {
@@ -44,7 +45,6 @@ export default function() {
 
     js.readFile(jsonFile)
       .then(data => {
-        console.dir('ATTEMPTING TO SEND INITIAL DATA')
         socket.emit('file-update', data)
       })
       .catch(error => console.error(error))

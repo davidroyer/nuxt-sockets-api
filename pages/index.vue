@@ -7,7 +7,8 @@
             <div 
               v-for="(post) in fileData" 
               :key="post.id" 
-              class="post">
+              class="post"
+            >
               <h2>{{ post.title }}</h2>
             </div>
           </div>
@@ -29,27 +30,29 @@
           class="inputMessage" 
           type="text" 
           placeholder="Type here..." 
-          @keyup.enter="sendMessage">
+          @keyup.enter="sendMessage"
+        >
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+/* eslint-disable no-console */
 import socket from '@/plugins/socket.io.js'
 
 export default {
-  asyncData({ $posts }) {
-    console.log('FROM ASYNCDATA: ', $posts)
+  watch: {
+    messages: 'scrollToBottom'
+  },
+  asyncData({ $postData }) {
+    console.log('FROM ASYNCDATA: ', $postData)
 
     return {
       messages: [],
       message: '',
       fileData: []
     }
-  },
-  watch: {
-    messages: 'scrollToBottom'
   },
   created() {
     socket.on('file-update', data => {
@@ -63,6 +66,9 @@ export default {
     })
   },
   mounted() {
+    console.log('testData: ', this.$testData)
+    console.log('testPosts: ', this.$testPosts)
+
     this.scrollToBottom()
   },
   methods: {
