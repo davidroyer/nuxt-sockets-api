@@ -5,7 +5,7 @@
         <div class="chatArea">
           <div class="posts">
             <div 
-              v-for="(post) in postsFromStore" 
+              v-for="(post) in dataResponse" 
               :key="post.id" 
               class="post"
             >
@@ -50,24 +50,33 @@ export default {
   watch: {
     messages: 'scrollToBottom'
   },
-  // fetch() {
-
-  // }
-  asyncData({ $postData }) {
-    console.log('FROM ASYNCDATA: ', $postData)
-
-    return {
-      messages: [],
-      message: '',
-      fileData: []
-    }
-  },
-  created() {
-    socket.on('file-update', data => {
-      // console.log('From created: ', data)
-      this.fileData = data
-      this.$store.dispatch('setPosts', data)
+  asyncData(context, callback) {
+    const renderedFrom = context.req ? 'Server' : 'Client'
+    socket.emit('get-data', function(dataResponse) {
+      callback(null, {
+        renderedFrom,
+        dataResponse,
+        messages: [],
+        message: '',
+        fileData: []
+      })
     })
+  },
+  // asyncData({ $postData }) {
+  //   console.log('FROM ASYNCDATA: ', $postData)
+
+  //   return {
+  //     messages: [],
+  //     message: '',
+  //     fileData: []
+  //   }
+  // },
+  created() {
+    // socket.on('file-update', data => {
+    //   // console.log('From created: ', data)
+    //   this.fileData = data
+    //   this.$store.dispatch('setPosts', data)
+    // })
   },
   beforeMount() {
     socket.on('new-message', message => {

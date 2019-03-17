@@ -35,7 +35,11 @@ export default function() {
     })
 
     socket.on('get-data', function(fn) {
-      fn(posts)
+      js.readFile(jsonFile)
+        .then(data => {
+          fn(data)
+        })
+        .catch(error => console.error(error))
     })
 
     socket.on('send-message', function(message) {
@@ -43,19 +47,26 @@ export default function() {
       socket.broadcast.emit('new-message', message)
     })
 
-    js.readFile(jsonFile)
-      .then(data => {
-        socket.emit('file-update', data)
-      })
-      .catch(error => console.error(error))
+    // js.readFile(jsonFile)
+    //   .then(data => {
+    //     socket.emit('file-update', data)
+    //   })
+    //   .catch(error => console.error(error))
 
     fs.watch(jsonFile, (event, filename) => {
       js.readFile(jsonFile)
         .then(data => {
-          console.dir(data)
           io.emit('file-update', data)
         })
         .catch(error => console.error(error))
     })
   })
+}
+
+function getJsonData(file) {
+  js.readFile(jsonFile)
+    .then(data => {
+      return data
+    })
+    .catch(error => console.error(error))
 }
