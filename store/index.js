@@ -12,7 +12,7 @@ export const mutations = {
 
 export const actions = {
   setPosts({ commit, state }, payload) {
-    console.log('TCL: setPosts -> payload')
+    // console.log('TCL: setPosts -> payload')
     commit('setPosts', payload)
   }
 }

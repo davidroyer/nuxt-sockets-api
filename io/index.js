@@ -47,11 +47,11 @@ export default function() {
       socket.broadcast.emit('new-message', message)
     })
 
-    // js.readFile(jsonFile)
-    //   .then(data => {
-    //     socket.emit('file-update', data)
-    //   })
-    //   .catch(error => console.error(error))
+    js.readFile(jsonFile)
+      .then(data => {
+        socket.emit('file-update', data)
+      })
+      .catch(error => console.error(error))
 
     fs.watch(jsonFile, (event, filename) => {
       js.readFile(jsonFile)

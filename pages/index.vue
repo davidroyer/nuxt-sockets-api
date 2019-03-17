@@ -1,5 +1,8 @@
 <template>
   <div>
+    <h2>apiPosts</h2>
+    <pre>{{ apiPosts }}</pre>
+    <hr>
     <ul class="pages">
       <li class="chat page">
         <div class="chatArea">
@@ -84,9 +87,6 @@ export default {
     })
   },
   mounted() {
-    console.log('testData: ', this.$testData)
-    console.log('testPosts: ', this.$testPosts)
-
     this.scrollToBottom()
   },
   methods: {

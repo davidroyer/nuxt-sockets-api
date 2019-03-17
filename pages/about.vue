@@ -1,9 +1,10 @@
 <template>
   <div>
     <h2>About1sss</h2>
+    <pre>{{ $root.apiPosts }}</pre>
     <div class="posts">
       <div 
-        v-for="(post) in postsFromProvider" 
+        v-for="(post) in $root.apiPosts" 
         :key="post.id" 
         class="post"
       >
@@ -14,25 +15,23 @@
 </template>
 
 <script>
-import socket from '@/plugins/socket.io.js'
+/* eslint-disable no-unused-vars */
 
+// import socket from '@/plugins/socket.io.js'
+// import { VApi } from '@/plugins/v-api.js'
 export default {
-  asyncData({ $providerData, req }) {
-    const renderedFrom = req ? 'Server' : 'Client'
-    const postsFromProvider = $providerData
-    return {
-      renderedFrom,
-      postsFromProvider
-    }
-  },
-
-  beforeMount() {
-    socket.on('file-update', data => {
-      // eslint-disable-next-line no-console
-      console.log('From created: ', data)
-      this.postsFromProvider = data
-    })
-  }
+  // asyncData({ $providerData, req }) {
+  //   const renderedFrom = req ? 'Server' : 'Client'
+  //   const postsFromProvider = $providerData
+  //   return {
+  //     renderedFrom,
+  //     postsFromProvider
+  //   }
+  // },
+  // data: () => ({
+  //   apiPosts: []
+  // }),
+  beforeMount() {}
 }
 </script>
 

@@ -32,7 +32,8 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/data-provider.js'],
+  plugins: ['@/plugins/socket.io.js', '@/plugins/v-api.js'],
+  // plugins: ['@/plugins/data-provider.js'],
 
   /*
   ** Nuxt.js modules
