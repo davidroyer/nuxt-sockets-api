@@ -6,6 +6,9 @@
     <nuxt-link to="/about">
       About
     </nuxt-link>
+    <nuxt-link to="/data-tests">
+      Tests
+    </nuxt-link>
     <nuxt :key="$route.fullPath" />
   </div>
 </template>

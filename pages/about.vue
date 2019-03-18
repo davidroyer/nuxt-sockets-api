@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2>About1sss</h2>
+    <h2>Testing - <code>$root.apiPosts</code></h2>
     <pre>{{ $root.apiPosts }}</pre>
     <div class="posts">
       <div 
@@ -17,22 +17,7 @@
 <script>
 /* eslint-disable no-unused-vars */
 
-// import socket from '@/plugins/socket.io.js'
-// import { VApi } from '@/plugins/v-api.js'
-export default {
-  // asyncData({ $providerData, req }) {
-  //   const renderedFrom = req ? 'Server' : 'Client'
-  //   const postsFromProvider = $providerData
-  //   return {
-  //     renderedFrom,
-  //     postsFromProvider
-  //   }
-  // },
-  // data: () => ({
-  //   apiPosts: []
-  // }),
-  beforeMount() {}
-}
+export default {}
 </script>
 
 <style scoped>

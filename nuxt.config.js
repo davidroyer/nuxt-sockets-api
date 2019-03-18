@@ -41,6 +41,7 @@ module.exports = {
   modules: ['~/io'],
 
   env: {
+    DEV_MODE: process.env.NODE_ENV !== 'production',
     WS_URL: process.env.WS_URL || 'http://localhost:3000'
   },
 
