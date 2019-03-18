@@ -32,17 +32,15 @@ export default (context, inject) => {
     }),
 
     created() {
-      if (context.isDev) {
-        // console.log('In DEV mode so using sockets for data')
-        // socket.emit('get-data', function(dataResponse) {
-        //   this.apiPosts = dataResponse
-        // })
-
+      if (context.isDev && !this.$parent) {
+        console.log('In DEV mode in root instance so using sockets for data')
         socket.on('file-update', data => {
           this.apiPosts = data
           this.socketData = data
         })
-      } else {
+      }
+
+      if (!context.isDev && !this.$parent) {
         console.log('Not in DEV mode so requiring the JSON file')
         this.apiPosts = require('@/io/data/posts.json')
         // this.socketData = require('@/io/data/posts.json')
