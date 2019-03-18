@@ -1,9 +1,9 @@
 <template>
   <div>
-    <h2>Testing - Computed <code>posts</code></h2>
+    <h2>Testing - Computed <code>$vStore.posts</code></h2>
     <h4>I believe <code>socketData</code> is the best way to go as of right now</h4>
     <br>
-    <pre>{{ posts }}</pre>
+    <pre>{{ $vStore.posts }}</pre>
   </div>
 </template>
 
@@ -13,12 +13,25 @@
 export default {
   computed: {
     posts() {
-      return this.$root.socketData
+      return this.$vStore.posts
+      // return this.$cmsApi.getCollection('posts')
+      // return this.$root.socketData
     }
   },
+  // asyncData({ $cmsApi }) {
+  //   // console.log('TCL: asyncData -> cmsApi', $cmsApi)
+  //   const cmsPosts = $cmsApi.getCollection()
+  //   console.log('asyncData - cmsPosts: ', cmsPosts)
+
+  //   return {
+  //     cmsApiPosts: cmsPosts
+  //   }
+  // },
 
   created() {},
-
+  mounted() {
+    console.log('$vStore', this.$vStore)
+  },
   head: {
     title: 'Nuxt.js with Socket.io'
   }

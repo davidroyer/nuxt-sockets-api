@@ -6,7 +6,7 @@ import js from 'jsonfile'
 const jsonFile = './io/data/posts.json'
 
 export default function() {
-  console.log('FROM IO - OPTIONS: ', this.options)
+  // console.log('FROM IO - OPTIONS: ', this.options)
 
   if (!this.options.dev) {
     console.log('From io/index.js - NOT in DEV mode')

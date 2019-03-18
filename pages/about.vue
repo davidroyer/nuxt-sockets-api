@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h2>Testing - <code>$root.apiPosts</code></h2>
-    <pre>{{ $root.apiPosts }}</pre>
+    <h2>Testing - <code>$vStore.posts</code></h2>
+    <pre>{{ $vStore.posts }}</pre>
     <div class="posts">
       <div 
-        v-for="(post) in $root.apiPosts" 
+        v-for="(post) in $vStore.posts" 
         :key="post.id" 
         class="post"
       >
