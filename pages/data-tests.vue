@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h2>Testing - <code>$root.socketData</code></h2>
-    <pre>{{ $root.socketData }}</pre>
+    <h2>Testing - <code>$vStore.posts</code></h2>
+    <pre>{{ $vStore.posts }}</pre>
   </div>
 </template>
 

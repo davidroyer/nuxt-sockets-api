@@ -32,7 +32,7 @@ module.exports = {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: ['@/plugins/socket.io.js', '@/plugins/v-api.js'],
+  plugins: ['@/plugins/socket.io.js', '@/plugins/v-store.js'],
   // plugins: ['@/plugins/data-provider.js'],
 
   /*
